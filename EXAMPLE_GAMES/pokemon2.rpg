@@ -1,0 +1,94 @@
+game Pokemonzz  
+location Johtoz type fire effectiveness 1.2 opponents Rival  
+ 
+relations
+	modifiers 
+		synergy 1.5
+		effective 1.2 
+		ineffective 0.4
+	type fire  
+		grass, bug < fire < water
+	type grass
+		water < grass < fire, bug
+	type water
+		fire < water < grass 
+	type bug
+		grass < bug < fire
+	type banana
+		grass < banana < bug, bug    
+     
+attributes
+	attribute pp is Integer   
+	unmodified attribute power is Float 
+	attribute current_hp is Integer  
+	unmodified attribute speed is Integer   
+	attribute max_hp is Integer  
+	attribute cost is Integer  
+            
+death require current_hp <= 0.1              
+
+effects
+	effect move Damage if pp <= pp then                    
+	current_hp is current_hp-power,  
+	speed is speed+2 hits enemy,     
+	pp is pp - 1 hits user            
+	
+	effect buff PowerUp 
+	if current_hp < max_hp / 2 
+	then power is power * 2,
+	power is power * 2,
+	power is power * 2,
+	power is power * 2,
+	power is power * 2 
+	
+	effect buff Recklessness
+	power is power * current_hp,
+	current_hp is current_hp / 3,     
+	speed is speed / 2       
+	
+moves
+	move Ember  type fire  
+		attribute power is 1     
+		effect move Damage 
+		effect buff PowerUp      
+ 
+	move Water_Gun type water                 
+		attribute power is 1 
+		effect move Damage
+
+	move Razor_Leaf	type grass
+		attribute power is 55
+		effect move Damage
+		
+	move Fired_Up type fire
+		attribute power is 10
+		effect move Damage
+		effect buff Recklessness          
+
+entities  
+	entity Zyndaquil type fire
+		attribute max_hp is 225
+        attribute current_hp is 225
+        attribute pp is 25    
+        attribute speed is 25
+		move Ember Fired_Up    
+
+	entity Zotodile extends Zyndaquil type water                      
+		attribute max_hp is 200
+        attribute current_hp is 200
+        attribute pp is 25
+		move Water_Gun 
+
+	entity Zhikorita type grass 
+		attribute max_hp is 250
+        attribute current_hp is 250
+        attribute pp is 25 
+        attribute speed is 25
+		move Razor_Leaf 
+	
+
+teams
+	team Zilver
+		members Zotodile
+	team Rival 
+		members Zyndaquil Zhikorita

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;not_present&apos; in &apos;mdsd.validation.RPGValidator.checkDeclarations(...)&apos; to &apos;notPresent&apos;&#x0D;&#x0A;- Original project: &apos;mdsd.rpg&apos;&#x0D;&#x0A;- Original element: &apos;mdsd.validation.RPGValidator.checkDeclarations(SystemRPG).not_present&apos;&#x0D;&#x0A;- Renamed element: &apos;not_present&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;not_present&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;mdsd.validation{RPGValidator.java[RPGValidator~checkDeclarations~QSystemRPG;@not_present!3023!3220!3044!3054!QMap\&lt;QString;QBoolean;&gt;;!0!false" name="notPresent" references="true" stamp="1587468034772" version="1.0"/>
+</session>

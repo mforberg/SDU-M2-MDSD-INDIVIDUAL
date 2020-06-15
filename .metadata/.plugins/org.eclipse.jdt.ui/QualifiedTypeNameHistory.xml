@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.eclipse.xtext.validation.Check"/>
+<fullyQualifiedTypeName name="java.util.jar.Attributes"/>
+<fullyQualifiedTypeName name="mdsd.rPG.AttributeValues"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="mdsd.rPG.Declaration"/>
+<fullyQualifiedTypeName name="mdsd.rPG.SystemRPG"/>
+<fullyQualifiedTypeName name="mdsd.rPG.Death"/>
+<fullyQualifiedTypeName name="mdsd.rPG.Locations"/>
+<fullyQualifiedTypeName name="mdsd.rPG.Relations"/>
+<fullyQualifiedTypeName name="mdsd.rPG.Moves"/>
+<fullyQualifiedTypeName name="mdsd.rPG.Teams"/>
+<fullyQualifiedTypeName name="mdsd.rPG.Attributes"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.Map.Entry"/>
+<fullyQualifiedTypeName name="java.util.stream.Collectors"/>
+<fullyQualifiedTypeName name="mdsd.rPG.Proposition"/>
+<fullyQualifiedTypeName name="mdsd.rPG.Entities"/>
+<fullyQualifiedTypeName name="mdsd.rPG.Buff"/>
+<fullyQualifiedTypeName name="mdsd.rPG.BEffect"/>
+<fullyQualifiedTypeName name="mdsd.rPG.MoveE"/>
+<fullyQualifiedTypeName name="mdsd.rPG.Effects"/>
+<fullyQualifiedTypeName name="mdsd.rPG.AfterE"/>
+<fullyQualifiedTypeName name="org.eclipse.xtext.util.StopWatch"/>
+<fullyQualifiedTypeName name="mdsd.rPG.Team"/>
+<fullyQualifiedTypeName name="org.eclipse.emf.ecore.EObject"/>
+<fullyQualifiedTypeName name="org.eclipse.emf.ecore.EReference"/>
+<fullyQualifiedTypeName name="org.eclipse.xtext.scoping.IScope"/>
+<fullyQualifiedTypeName name="mdsd.rPG.Entity"/>
+<fullyQualifiedTypeName name="java.util.HashSet"/>
+<fullyQualifiedTypeName name="mdsd.rPG.AltAttribute"/>
+<fullyQualifiedTypeName name="org.eclipse.xtext.EcoreUtil2"/>
+<fullyQualifiedTypeName name="mdsd.rPG.Attribute"/>
+<fullyQualifiedTypeName name="org.eclipse.xtext.scoping.Scopes"/>
+<fullyQualifiedTypeName name="mdsd.rPG.Move"/>
+<fullyQualifiedTypeName name="mdsd.rPG.Type"/>
+<fullyQualifiedTypeName name="mdsd.rPG.TypeExpression"/>
+<fullyQualifiedTypeName name="java.util.Observer"/>
+<fullyQualifiedTypeName name="mdsd.rPG.RPGPackage"/>
+<fullyQualifiedTypeName name="mdsd.rPG.RPGPackage.Literals"/>
+</qualifiedTypeNameHistroy>

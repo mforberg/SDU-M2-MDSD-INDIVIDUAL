@@ -1,0 +1,198 @@
+grammar mdsd.RPG with org.eclipse.xtext.common.Terminals
+
+generate rPG "http://www.RPG.mdsd"
+
+SystemRPG:
+	'game' name=ID declarations+=Declaration*
+;
+	
+Declaration:
+	Locations | Relations | Moves | Entities | Teams | Death | Attributes | Effects
+;
+
+Effects:
+	'effects' effect+=Effect+
+;
+
+Effect:
+	'effect' (Buff | MoveE | AfterE)
+;
+
+Buff:
+	'buff' name=ID rule=Rule (',' extraRule+=AdditionalBuffRule)*
+;
+
+MoveE:
+	'move' name=ID rule=Rule (',' extraRule+=AdditionalRule)*
+;
+
+AfterE:
+	'after' name=ID rule=Rule
+;
+
+Attributes:
+	'attributes' attribute+=Attribute+
+;
+
+Attribute:
+	'attribute' name=ID aVal=AttributeValues
+;
+
+	
+Locations:
+	'location' loc+=Loc+
+;
+
+Loc:
+	name=ID 'opponents' team=[Team]
+;
+
+Relations:
+	'relations' rm=RelationModifiers type+=Type+
+;
+
+RelationModifiers returns Relations:
+	'modifiers' 'synergy' syn=INT 'effective' eff=INT
+	
+;
+
+Type:
+	'type' name=ID tExpression=TypeExpression?
+;
+
+TypeExpression:
+	strong=[Type] (',' strong2+=[Type])*  '<' currentT=[Type] '<' weak=[Type] (',' weak2+=[Type])*
+;
+
+
+Moves:
+	'moves' move+=Move+
+;
+
+Move:
+	'move' name=ID eType=EType att+=AltAttribute* (mEffect+=MEffect | bEffect+=BEffect | aEffect+=AEffect)*
+;
+
+MEffect:
+	'effect' 'move' moveEName=[MoveE]
+;
+
+BEffect:
+	'effect' 'buff' buffEName=[Buff]
+;
+
+AEffect:
+	'effect' 'after' afterEName=[AfterE]
+;
+
+EType:
+	'type' type=[Type]
+;
+
+AttributeValues:
+	'is' (lTypes=LegalType | an=ActualNumbers)
+;
+
+AltAttribute:
+	 'attribute' attribute=[Attribute] av=AttributeValues?
+;
+
+Rule:
+	('if' or = ORcondition 'then')? target=[Attribute] 'is' sum=Sum
+;
+
+AdditionalRule returns Rule:
+	target=[Attribute] 'is' sum=Sum 'hits' (hits='player' | hits='enemy')
+;
+
+AdditionalBuffRule returns Rule:
+	target=[Attribute] 'is' sum=Sum
+;
+
+Entities:
+	'entities' entity+=Entity+
+;
+
+Death:
+	'death' req=Require
+;
+
+Entity:
+	'entity' name=ID ('extends' extend=[Entity])? eType=EType att+=AltAttribute* eMoves=EntityMoves
+;
+
+
+
+EntityMoves:
+	'move' move+=[Move]+
+;
+
+Teams:
+	'teams' team+=Team+
+;
+
+Team:
+	'team' name=ID members=Members
+;
+
+Members:
+	'members' entity+=[Entity]+
+;
+
+Require:
+	'require' log=ORcondition
+;
+
+ORcondition returns Proposition:
+	ANDcondition ('OR' {Or.left=current} right=ANDcondition)*
+;
+
+ANDcondition returns Proposition:
+	Statement ('AND'{And.left=current} right=Statement)*
+	
+;
+
+Statement returns Proposition:
+	NumberComparing | '(' ORcondition ')'
+;
+
+NumberComparing:
+	left=Sum comp=Comparator right=Sum
+;
+
+Comparator:
+	{Smaller}'<' | {SmallerEq}'<=' | {Eq} '==' | {BiggerEq}'>=' | {Bigger}'>' | {NEq}'!='
+;
+
+Sum:
+	Multiply (('+' {Add.left=current} | '-' {Sub.left=current}) right=Multiply)*
+;
+
+Multiply:
+	AtomicNumber (('*' {Mult.left=current} | '/' {Div.left=current}) right=AtomicNumber)*
+;
+
+AtomicNumber:
+	ActualNumbers | NameAttribute
+;
+
+ActualNumbers:
+	FloatNum | IntNum
+;
+
+NameAttribute:
+	attribute=[Attribute]
+;
+
+
+IntNum:
+	value=INT
+;
+
+FloatNum:
+	i=INT '.' decimal=INT
+;
+
+LegalType:
+	'Float' | 'Integer'
+;
